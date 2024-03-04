@@ -165,3 +165,6 @@ migrations/
 Pipfile
 Pipfile.lock
 media/
+static/*
+!static/css/
+!static/css/base.css
