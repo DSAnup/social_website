@@ -29,7 +29,7 @@ def user_login(request):
 def register(request):
     if request.method == 'POST':
         user_form = UserRegistrationForm(request.POST)
-        profile_form = ProfileEditForm(request.POST, request.FILES)
+        profile_form = ProfileRegistrationForm(request.POST, request.FILES)
         if user_form.is_valid() and profile_form.is_valid():
 
             new_user = user_form.save(commit=False)
@@ -43,7 +43,7 @@ def register(request):
             return render(request, 'account/register_done.html', {'new_user': new_user})
     else:
         user_form = UserRegistrationForm()
-        profile_form = ProfileEditForm()
+        profile_form = ProfileRegistrationForm()
     return render(request, 'account/register.html', {'user_form': user_form, 'profile_form': profile_form})
 
 @login_required
