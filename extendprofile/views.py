@@ -24,7 +24,7 @@ def user_login(request):
                 return HttpResponse('Invalid Login')
     else:
         form = LoginForm()
-    return render(request, 'account/login.html', {'form': form})
+    return render(request, 'account/login2.html', {'form': form})
 
 def register(request):
     if request.method == 'POST':
@@ -60,10 +60,20 @@ def edit(request):
             messages.error(request, 'Error updating your profile')
     else:
         user_form = UserEditForm(instance=request.user)
+
+        obj, created = Profile.objects.get_or_create(user=request.user)
+        if created:
+            obj.user = request.user
+            obj.save()
+
         profile_form = ProfileEditForm(instance=request.user.profile)
+
     
-    return render(request, 'account/edit.html', {'user_form': user_form, 'profile_form': profile_form})
+    return render(request, 'account/edit.html', {'user_form': user_form,  'profile_form': profile_form})
 
 @login_required
 def dashboard(request):
     return render(request, 'account/dashboard.html', {'section': 'dashboard'})
+
+def login_cancel(request):
+    return render(request, 'socialaccount/login_cancelled.html')
