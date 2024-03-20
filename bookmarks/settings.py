@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
     "debug_toolbar",
+    'django_extensions',
     'extendprofile',
     'images',
 ]
