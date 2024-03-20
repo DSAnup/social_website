@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     "debug_toolbar",
     'extendprofile',
+    'images',
 ]
 
 MIDDLEWARE = [
