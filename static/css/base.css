@@ -86,7 +86,7 @@ ol {
 
 /* forms */
 form {
-    overflow:hidden;
+    overflow:auto;
 }
 
 form p {
